@@ -13,4 +13,12 @@ export class UserController {
 
     return { user }
   }
+
+  @HttpCode(200)
+  @Get()
+  public async getUsers () {
+    const users = await this.userService.getUsers()
+
+    return { users }
+  }
 }
