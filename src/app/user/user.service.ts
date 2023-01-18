@@ -34,4 +34,22 @@ export class UserService {
 
     return foundUser
   }
+
+  public async getUsers (): Promise<UserResponse[]> {
+    const foundUsers = await this.prisma.user.findMany({
+      select: {
+        id: true,
+        email: true,
+        createdAt: true
+      }
+    })
+    if (!foundUsers) {
+      throw new HttpException({
+        status: HttpStatus.NOT_FOUND,
+        error: 'Users not found'
+      }, HttpStatus.NOT_FOUND)
+    }
+
+    return foundUsers
+  }
 }
