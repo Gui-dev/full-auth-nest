@@ -27,4 +27,11 @@ export class AuthController {
     response.cookie('token', data.token)
     return response.status(201).json(data)
   }
+
+  @HttpCode(205)
+  @Get('signout')
+  public async signout (@Req() request: Request, @Res() response: Response) {
+    response.clearCookie('token')
+    return response.send()
+  }
 }
