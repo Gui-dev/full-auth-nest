@@ -1,73 +1,120 @@
+<h1 align="center">
+  Full Authentication with Nestjs and JWT
+</h1>
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <img
+    src="./.screens/1.png"
+    alt="Full Authentication with Nestjs and JWT"
+    title="Full Authentication with Nestjs and JWT"
+  />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# 💻 Project
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<p>
+Autenticação usando Nestjs com Typescript e JWT
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## ✨ Technologies used
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [Node](https://nodejs.org)
+- [Nest](https://docs.nestjs.com)
+- [Typescript](https://www.typescriptlang.org)
+- [Passport-JWT](http://www.passportjs.org/packages/passport-jwt)
 
-## Installation
+# 🚀 How to run
 
-```bash
-$ npm install
-```
+## Install dependencies
 
-## Running the app
+npm install
 
-```bash
-# development
-$ npm run start
+## Run the app
 
-# watch mode
-$ npm run start:dev
+npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
+### Request
 
-## Test
+<p>Authentication</p>
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+POST /auth/signup
 ```
 
-## Support
+<span>Datas</span>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+{
+	"username": "bruce@emai.com",
+	"password": "123456"
+}
+```
 
-## Stay in touch
+```bash
+POST /auth/signin
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+<span>Datas</span>
 
-## License
+```bash
+{
+	"username": "bruce@emai.com",
+	"password": "123456"
+}
+```
 
-Nest is [MIT licensed](LICENSE).
+<p>Return</p>
+
+```bash
+{
+	"user": {
+    "id": "307b8032-9ff1-4a4e-9ae8-26c8cb25ada1"
+		"username": "bruce@email.com"
+	},
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJicnVjZUBlbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NzM0MTc2MjEsImV4cCI6MTY3MzQxNzY4MX0.6SM7SrQrA8_p_EujG80jX7flv-LW0D4gPLRtbaClQB4"
+}
+```
+
+```bash
+GET /auth/signout
+```
+
+<p>Users</p>
+
+```bash
+GET /users/:id
+```
+
+<p>Return</p>
+
+```bash
+{
+	"user": {
+		"id": "307b8032-9ff1-4a4e-9ae8-26c8cb25ada1",
+		"email": "bruce@email.com",
+		"createdAt": "2023-01-17T06:48:35.239Z"
+	}
+}
+```
+
+```bash
+GET /users
+```
+
+<p>Return</p>
+
+```bash
+{
+	"users": [
+		{
+			"id": "307b8032-9ff1-4a4e-9ae8-26c8cb25ada1",
+			"email": "bruce@email.com",
+			"createdAt": "2023-01-17T06:48:35.239Z"
+		}
+	]
+}
+```
+
+## 📄 Licença
+
+This project is under the MIT license. See the file [LICENSE](LICENSE.md) for
+more details
